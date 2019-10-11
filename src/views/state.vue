@@ -5,21 +5,9 @@
       <span>设别运行实时状态</span>
     </h5>
     <ul class="nav">
-      <li>
-        <p>在线设备(个)</p>
-        <h5>800</h5>
-      </li>
-      <li>
-        <p>离线设备(个)</p>
-        <h5>800</h5>
-      </li>
-      <li>
-        <p>报警设备(个)</p>
-        <h5>800</h5>
-      </li>
-      <li>
-        <p>故障设备(个)</p>
-        <h5>800</h5>
+      <li v-for='item in allData' :key='item.name'>
+        <p>{{item.name}}(个)</p>
+        <h5>{{item.value}}</h5>
       </li>
     </ul>
     <div id="stateChart"></div>
@@ -29,16 +17,26 @@
 export default {
   data() {
     return {
-      myChart: null
+      myChart: null,
+      allData:[]
     };
   },
   mounted() {
     window.addEventListener("resize", () => {
       this.myChart.resize();
     });
-    this.Drea();
+    
+    this.getData();
   },
   methods: {
+    getData(){
+      this.$http.post('/api/state',{}).then(res => {
+        if(res.status == 200){
+          this.allData = res.data.dataList;
+          this.Drea();
+        }
+      })
+    },
     Drea() {
       this.myChart = this.$echarts.init(
         document.getElementById("stateChart"),
@@ -184,24 +182,7 @@ export default {
                 show: false
               }
             },
-            data: [
-              {
-                value: 10,
-                name: "在线设备"
-              },
-              {
-                value: 5,
-                name: "离线设备"
-              },
-              {
-                value: 15,
-                name: "报警设备"
-              },
-              {
-                value: 25,
-                name: "故障设备"
-              }
-            ]
+            data: this.allData
           }
         ]
       };

@@ -55,17 +55,24 @@ strong,span,i{font-style:normal;}
   .el-main {
     height: calc(100vh - 125px);
     overflow: hidden;
-    padding: 0 15px 15px 15px !important;
+    padding: 0 15px 0 15px !important;
     background-color: #09153d;
     .container-left-title{
       width: 142px;height: 50px;background: url(../images/bg_modle.png) center center no-repeat;
-      background-size: 100% 100%;font-size: 16px;text-align: center;line-height: 50px;font-size: 16px;
+      background-size: 100% 100%;font-size: 16px;text-align: center;line-height: 50px;font-size: 16px;margin-bottom: 20px;
     }
   }
 }
 .container-left{
     .left-main{
-        box-sizing: border-box;margin: 20px auto 0;height: calc(100vh - 215px);width: 100%;border:1px #016ff3 solid;border-radius: 10px;position: relative;padding:20px 15px;
+        box-sizing: border-box;margin: 0 auto 0;height: 79.2vh;width: 100%;border:1px #016ff3 solid;border-radius: 10px;position: relative;padding:20px 15px;display: flex;
+        .main-item1{
+          width: 58%;height: 100%;position: relative;
+        }
+        .main-item2{
+          width: 42%;height: 100%;position: relative;
+        }
+
     }
 }
 .container-center{

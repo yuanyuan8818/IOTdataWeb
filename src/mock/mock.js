@@ -1,6 +1,19 @@
 import Mock from "mockjs";
 
 /*
+ **社区数据
+ */
+Mock.mock("/api/analysis", /post|get/i, {
+  "dataList|3":[
+    {
+      'name|+1':['智能设备数','APP用户总数','APP日活数'],
+      'icon|+1':['icon-iot-zhinengshebei','icon-iot-appyonghux','icon-iot-weibiaoti102020202'],
+      'val':'@integer(10000,99999)'
+    }
+  ]
+})
+
+/*
  **行为分析
  */
 Mock.mock("/api/aba", /post|get/i, {
@@ -25,9 +38,14 @@ Mock.mock("/api/aba", /post|get/i, {
 /*
  **设备状态
  */
-
-
-
+Mock.mock("/api/state", /post|get/i, {
+  "dataList|4":[
+    {
+      'value':"@integer(800, 200)",
+      'name|+1':['在线设备','离线设备','报警设备','故障设备']
+    }
+  ]
+})
 
 /*
  **设施维护 -> 事件列表

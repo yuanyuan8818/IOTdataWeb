@@ -11,7 +11,13 @@
               大数据统计分析
             </div>
             <div class="left-main">
-              <!-- <analysis></analysis> -->
+              <div class="main-item1">
+                <analysis ref='analysisObj'></analysis>
+              </div>
+              <div class="main-item2">
+                
+              </div>
+              
             </div>
           </div>
         </el-col>
@@ -25,7 +31,7 @@
           <div class="grid-content container-right">
             <safety></safety>
             <parking></parking>
-            <state></state>
+            <state ref='stateObj'></state>
           </div>
         </el-col>
       </el-col>
@@ -42,7 +48,18 @@ import safety from './safety.vue';
 import parking from './parking.vue';
 import state from './state.vue';
 export default {
+  data(){
+    return{
+      timer:null
+    }
+  },
   name: "home",
+  mounted(){
+    this.timer = setInterval(()=>{
+      this.$refs.stateObj.getData();
+      this.$refs.analysisObj.getData();
+    },3000);
+  },
   components: {
     selfHeader,analysis,aba,alarm,safety,parking,state
   }
