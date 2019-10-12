@@ -7,6 +7,11 @@ import echarts from "echarts";
 import "./plugins/element.js";
 import "@/assets/scss/app.scss";
 import "./mock/mock.js";
+import "echarts-gl"
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
 
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$http = axios;
